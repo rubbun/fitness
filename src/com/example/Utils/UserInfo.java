@@ -13,6 +13,8 @@ public class UserInfo {
 	public String surname = null;
 	public String email = null;
 	public String weight = null;
+	public String target_type = null;
+	public float target_value = 0.0f;
 	public SharedPreferences pref;
 	
 	public UserInfo(Context context){
@@ -60,5 +62,34 @@ public class UserInfo {
 	
 	public String getWeight() {
 		return pref.getString(Constants.values.WEIGHT.name(), null);
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+		Editor edit = pref.edit();
+		edit.putString(Constants.values.WEIGHT.name(), weight);
+		edit.commit();
+	}
+
+	public String getTarget_type() {
+		return pref.getString(Constants.values.TARGET_TYPE.name(), "");
+	}
+
+	public void setTarget_type(String target_type) {
+		this.target_type = target_type;
+		Editor edit = pref.edit();
+		edit.putString(Constants.values.TARGET_TYPE.name(), target_type);
+		edit.commit();
+	}
+
+	public float getTarget_value() {
+		return pref.getFloat(Constants.values.TARGET_VALUE.name(), 0.0f);
+	}
+
+	public void setTarget_value(float target_value) {
+		this.target_value = target_value;
+		Editor edit = pref.edit();
+		edit.putFloat(Constants.values.TARGET_VALUE.name(), target_value);
+		edit.commit();
 	}
 }

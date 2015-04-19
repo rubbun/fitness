@@ -69,9 +69,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="com.example.mygooglemap.SetTargetActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.example.mygooglemap.SetTargetActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.mygooglemap.GraphActivity"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

@@ -33,7 +33,7 @@
             <ImageView
                 android:id="@+id/ivRunning"
                 android:layout_width="90dp"
-                android:layout_height="130dp"
+                android:layout_height="120dp"
                 android:background="@drawable/frame_animation" />
         </LinearLayout>
 
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:layout_weight="1"
                 android:background="@drawable/green_button"
                 android:text="View Result"
@@ -71,10 +71,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:layout_weight="1"
                 android:background="@drawable/green_button"
                 android:text="Set Target"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            
+           <Button
+                android:id="@+id/btnPlotGraph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/green_button"
+                android:text="Plot Graph"
                 android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>

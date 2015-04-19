@@ -1,8 +1,12 @@
 package com.example.mygooglemap;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -12,13 +16,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.adapter.ExerciseTypeAdapter;
+import com.example.constant.Constants;
 import com.example.database.MyExerciseDB;
+import com.example.network.KlHttpClient;
 import com.example.object.ExerciseType;
 import com.example.object.MyExercise;
 
 public class DialogManager {
 	//content of dialog Prepare
 	static boolean flag = false;
+	public static MapActivity activity;
+	public static String weight;
 	
 	public static void showDialogPrepare(final Context context, final MyExercise myExercise)
 	{		
@@ -119,6 +127,7 @@ public class DialogManager {
 	//content of dialog choose exercise and start
 		public static void showDialogForProfile(final MapActivity context)
 		{
+			activity = context;
 			final Dialog dialog2 = new Dialog(context);
 			dialog2.setContentView(R.layout.userinfo_dialog);
 			dialog2.setTitle("Profile");
@@ -145,6 +154,12 @@ public class DialogManager {
 						flag = false;
 						ed_weight.setEnabled(false);
 						btn_edit.setText("Edit");
+						if(!ed_weight.getText().toString().equalsIgnoreCase("0")){
+							weight = ed_weight.getText().toString();
+							updateWeight();
+						}else{
+							Toast.makeText(context, "Please enter a valid weight", Toast.LENGTH_LONG).show();
+						}
 					}
 				}
 			});
@@ -154,8 +169,53 @@ public class DialogManager {
 
 				@Override
 				public void onClick(View v) {
+					
 					dialog2.dismiss();
 				}
 			});
+		}
+		
+		private static void updateWeight() {
+			new UpdateWeight().execute();
+		}
+		
+		public static class UpdateWeight extends AsyncTask<Void, Void, Boolean>{
+
+			@Override
+			protected void onPreExecute() {
+				super.onPreExecute();
+				activity.doShowLoading();
+			}
+			@Override
+			protected Boolean doInBackground(Void... params) {
+				
+				try {
+					JSONObject ob = new JSONObject();
+					ob.put("weight", weight);
+					ob.put("user_id", activity.app.getUserinfo().user_id);
+					
+					String response = KlHttpClient.SendHttpPost(Constants.UPDATE_WEIGHT, ob.toString());
+					if(response!= null){
+						JSONObject obj = new JSONObject(response);
+						if(obj.getBoolean("status")){
+							activity.app.getUserinfo().setWeight(weight);
+							return true;
+						}
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				return false;
+			}
+			@Override
+			protected void onPostExecute(Boolean result) {
+				super.onPostExecute(result);
+				activity.doRemoveLoading();
+				if(result){
+					Toast.makeText(activity, "Weight successfully updated!!", Toast.LENGTH_LONG).show();
+				}else{
+					Toast.makeText(activity, "Some Error occured.Plese try again..", Toast.LENGTH_LONG).show();
+				}
+			}
 		}
 }

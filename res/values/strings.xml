@@ -8,7 +8,7 @@
     <color name="red">#ff0000</color>
 
     <string-array name="target_option">
-        <item>Calory</item>
+        <item>Calorie</item>
         <item>Miles</item>
     </string-array>
 

@@ -31,7 +31,7 @@ public class MyExerciseAdapter extends ArrayAdapter<MyExercise>{
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		ViewHolder holder=null;
 		if(convertView==null)
 		{
@@ -60,6 +60,7 @@ public class MyExerciseAdapter extends ArrayAdapter<MyExercise>{
 			public void onClick(View v) {
 				Intent intent=new Intent(context,DetailActivity.class);
 				intent.putExtra(DetailActivity.DETAIL_EXERCISE, myExercise);
+				intent.putExtra("position", position);
 				context.startActivity(intent);
 			}
 		});

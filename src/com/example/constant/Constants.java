@@ -1,5 +1,10 @@
 package com.example.constant;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import com.example.object.MyLocation;
+
 public class Constants {
 
 	public static final String BASE_URL = "http://devlpconsole.com/fitness/";
@@ -37,6 +42,8 @@ public class Constants {
 	
 	public static final String INSERT_DATA = BASE_URL + "insert_exercise.php";
 	public static final String HISTORY = BASE_URL + "history.php";
+	public static final String UPDATE_WEIGHT = BASE_URL + "weight_update.php";
+	public static final String SET_TARGET = BASE_URL + "terget.php";
 
 	public static final String ADD_special_temperature = BASE_URL + "addSpecialTemperature.php";
 
@@ -61,7 +68,10 @@ public class Constants {
 		NAME,
 		SURNAME,
 		WEIGHT,POSTCODE,
-		PHONE,DOB,EMAIL
+		PHONE,DOB,EMAIL,
+		TARGET_TYPE,TARGET_VALUE
 		
 	}
+	
+	public static ArrayList<ArrayList<MyLocation>> locationList = new ArrayList<ArrayList<MyLocation>>();
 }

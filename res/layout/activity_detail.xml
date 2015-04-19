@@ -22,15 +22,14 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/cycle" />
-        
+
         <TextView
             android:id="@+id/txtCalories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
-
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -150,6 +149,7 @@
             android:layout_weight="1"
             android:text="TextView" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -162,15 +162,25 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/shape_start"/>
+            android:background="@drawable/shape_start" />
+
         <ImageButton
             android:id="@+id/btnViewResult"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/shape_history"/>
+            android:background="@drawable/shape_history" />
+
+        <ImageButton
+            android:id="@+id/btnShare"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/shape_share" />
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
